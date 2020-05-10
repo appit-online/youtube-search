@@ -1,6 +1,6 @@
 {
   "name": "youtube-search-without-api-key",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Search videos on YouTube without API key",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/appit-online/p12-to-pem.git"
+    "url": "git+https://github.com/appit-online/youtube-search.git"
   },
   "keywords": [
     "youtube",

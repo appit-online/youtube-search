@@ -1,6 +1,6 @@
 # [youtube-search: Node.js](https://github.com/appit-online/youtube-search)
 
-Search videos on youtube without an API key
+Search videos on youtube without API key
 
 
 **Table of contents:**
