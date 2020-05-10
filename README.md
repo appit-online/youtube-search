@@ -2,7 +2,6 @@
 
 Search videos on youtube without API key
 
-
 **Table of contents:**
 
 
