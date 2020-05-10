@@ -29,8 +29,8 @@ import * as yt from 'youtube-search-without-api-key';
  * Given a search query, searching on youtube
  * @param {string} search value (string or videoId).
  */
-const videos = yt.search('Hallo Welt');
-const videos = yt.search('y5kIrbG2gRc');
+const videos = await yt.search('Hallo Welt');
+const videos = await yt.search('y5kIrbG2gRc');
 console.log('Videos:');
 console.log(videos);
 
@@ -65,7 +65,7 @@ const yt = require('youtube-search-without-api-key');
  * Given a search query, searching on youtube
  * @param {string} search value.
  */
-const videos = yt.search('My Search Query');
+const videos = await yt.search('My Search Query');
 console.log('Videos:');
 console.log(videos);
 ```
