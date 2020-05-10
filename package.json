@@ -1,0 +1,56 @@
+{
+  "name": "youtube-search-without-api-key",
+  "version": "1.0.0",
+  "description": "Search videos on YouTube without API key",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appit-online/p12-to-pem.git"
+  },
+  "keywords": [
+    "youtube",
+    "youtube search",
+    "angular youtube search",
+    "youtube api",
+    "youtube crawler"
+  ],
+  "funding": {
+    "url": "https://paypal.me/dave7117",
+    "type": "paypal"
+  },
+  "author": "David Koller",
+  "license": "ISC",
+  "files": [
+    "lib/**/*"
+  ],
+  "bugs": {
+    "url": "https://github.com/appit-online/youtube-search/issues"
+  },
+  "homepage": "https://github.com/appit-online/youtube-search#readme",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.11.0",
+    "jest": "^25.2.7",
+    "prettier": "^2.0.2",
+    "ts-jest": "^25.3.1",
+    "tslint": "^6.1.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "got": "^11.1.2"
+  }
+}
