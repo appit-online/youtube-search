@@ -12,7 +12,7 @@ export async function searchVideo(searchQuery: string) {
   const options = { type: "video", limit: 0 };
 
   const searchRes: any = await got.get(encodeURI(`${YOUTUBE_URL}/results?q=${encodeURI(searchQuery.trim())}&hl=en`));
-  let html = await searchRes.data;
+  let html = await searchRes.body;
   // try to parse html
   try {
     const data = html.split("ytInitialData = '")[1].split("';</script>")[0];
