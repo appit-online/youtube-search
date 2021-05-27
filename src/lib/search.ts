@@ -2,8 +2,6 @@ import { ParserService } from './parser.service';
 import got from 'got';
 
 export async function searchVideo(searchQuery: string) {
-  const cheerio = require('cheerio');
-
   const YOUTUBE_URL = 'https://www.youtube.com';
 
   const results = [];
