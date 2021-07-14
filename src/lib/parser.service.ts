@@ -4,11 +4,13 @@ export class ParserService {
     if (!data || !data.videoRenderer) return;
     let title = ''
     try{
-      try{
         title = data.videoRenderer.title.runs[0].text;
         title = title.replace("\\\\", "\\");
+      try{
         title = decodeURIComponent(title);
-      }catch (e) {}
+      }catch (e) {
+        // @ts-ignore
+      }
 
       return {
         id: {
