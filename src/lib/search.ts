@@ -1,6 +1,8 @@
 import { ParserService } from './parser.service';
 import got from 'got';
 
+const rfc3986EncodeURIComponent = (str: string) => encodeURIComponent(str).replace(/[!'()*]/g, escape);
+
 export async function searchVideo(searchQuery: string) {
   const YOUTUBE_URL = 'https://www.youtube.com';
 
@@ -9,7 +11,7 @@ export async function searchVideo(searchQuery: string) {
   let fetched = false;
   const options = { type: "video", limit: 0 };
 
-  const searchRes: any = await got.get(encodeURI(`${YOUTUBE_URL}/results?q=${encodeURI(searchQuery.trim())}&hl=en`));
+  const searchRes: any = await got.get(`${YOUTUBE_URL}/results?q=${rfc3986EncodeURIComponent(searchQuery.trim())}&hl=en`);
   let html = await searchRes.body;
   // try to parse html
   try {
