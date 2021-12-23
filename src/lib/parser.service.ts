@@ -17,6 +17,7 @@ export class ParserService {
           videoId: data.videoRenderer.videoId
         },
         url: `https://www.youtube.com/watch?v=${data.videoRenderer.videoId}`,
+        author: data.videoRenderer.ownerText.runs[0].text,
         title,
         description: data.videoRenderer.descriptionSnippet && data.videoRenderer.descriptionSnippet.runs[0] ? data.videoRenderer.descriptionSnippet.runs[0].text : "",
         duration_raw: data.videoRenderer.lengthText ? data.videoRenderer.lengthText.simpleText : null,
