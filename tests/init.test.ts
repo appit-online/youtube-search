@@ -30,14 +30,12 @@ const mockJsonResponse: ParsedVideSearchResponse = {
 describe('Youtube search without API key', () => {
   const fetchMock = jest.fn();
 
-  global.fetch = fetchMock;
-
   it('fetches and parses a search response', async () => {
     fetchMock.mockImplementationOnce(() => ({
       text: async () => JSON.stringify(mockJsonResponse),
     }));
 
-    await expect(search('test')).resolves.toEqual([
+    await expect(search('test', { fetch: fetchMock })).resolves.toEqual([
       {
         description: 'testDescription',
         duration_raw: 'testLength',
