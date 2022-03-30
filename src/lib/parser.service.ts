@@ -3,6 +3,7 @@ export class ParserService {
   parseVideo(data: any) {
     if (!data || !data.videoRenderer) return;
     let title = ''
+    let description = ''
     try{
         title = data.videoRenderer.title.runs[0].text;
         title = title.replace("\\\\", "\\");
@@ -12,13 +13,17 @@ export class ParserService {
         // @ts-ignore
       }
 
+      try {
+        data.videoRenderer.detailedMetadataSnippets[0].snippetText.runs.forEach((item: any) => description += item.text)
+      } catch (e) {}
+
       return {
         id: {
           videoId: data.videoRenderer.videoId
         },
         url: `https://www.youtube.com/watch?v=${data.videoRenderer.videoId}`,
         title,
-        description: data.videoRenderer.descriptionSnippet && data.videoRenderer.descriptionSnippet.runs[0] ? data.videoRenderer.descriptionSnippet.runs[0].text : "",
+        description,
         duration_raw: data.videoRenderer.lengthText ? data.videoRenderer.lengthText.simpleText : null,
         snippet: {
           url: `https://www.youtube.com/watch?v=${data.videoRenderer.videoId}`,
