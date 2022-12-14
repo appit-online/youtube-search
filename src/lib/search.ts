@@ -2,6 +2,7 @@ import { ParserService } from './parser.service';
 import got from 'got';
 
 const rfc3986EncodeURIComponent = (str: string) => encodeURIComponent(str).replace(/[!'()*]/g, escape);
+const dur;
 
 export async function searchVideo(searchQuery: string, dur: string) {
   const YOUTUBE_URL = 'https://www.youtube.com';
