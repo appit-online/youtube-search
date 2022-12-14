@@ -69,7 +69,7 @@ const yt = require('youtube-search-without-api-key');
  * Given a search query, searching on youtube
  * @param {string} search value.
  */
-const videos = await yt.search('My Search Query');
+const videos = await yt.search('My Search Query', 'under');
 console.log('Videos:');
 console.log(videos);
 ```
