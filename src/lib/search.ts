@@ -3,16 +3,18 @@ import got from 'got';
 
 const rfc3986EncodeURIComponent = (str: string) => encodeURIComponent(str).replace(/[!'()*]/g, escape);
 
-export async function searchVideo(searchQuery: string, dur: object) {
+export async function searchVideo(searchQuery: string, dur: string) {
   const YOUTUBE_URL = 'https://www.youtube.com';
-   const duration = { under: 'EgQQARgB', between: 'EgQQARgD', over: 'EgQQARgC' };
+  const duration = { under: 'EgQQARgB', between: 'EgQQARgD', over: 'EgQQARgC' };
+  type ObjectKey = keyof typeof duration;
+  const durKey = dur as ObjectKey;
 
   const results = [];
   let details = [];
   let fetched = false;
   const options = { type: "video", limit: 0 };
 
-  const searchRes: any = await got.get(`${YOUTUBE_URL}/results?q=${rfc3986EncodeURIComponent(searchQuery.trim())}&hl=en&sp=${duration[dur]}`);
+  const searchRes: any = await got.get(`${YOUTUBE_URL}/results?q=${rfc3986EncodeURIComponent(searchQuery.trim())}&hl=en&sp=${duration[durKey]}`);
   let html = await searchRes.body;
   // try to parse html
   try {
