@@ -5,8 +5,8 @@ export class ParserService {
 
     try {
       let title = '';
-      if (data.compactVideoRenderer){
-        title = data.compactVideoRenderer.title.runs[0].text;
+      if (data.videoRenderer){
+        title = data.videoRenderer.title.runs[0].text;
         title = title.replace("\\\\", "\\");
 
         try {
@@ -14,31 +14,41 @@ export class ParserService {
         } catch (e) {
           // @ts-ignore
         }
-
+        const descripcionAux = function () {
+          try {
+              data.videoRenderer.detailedMetadataSnippets[0].snippetText.runs.map((c, i) => {
+                  data.videoRenderer.detailedMetadataSnippets[0].snippetText.runs[i].toString = function () {
+                      return this.text;
+                  };
+              });
+              return data.videoRenderer.detailedMetadataSnippets[0].snippetText.runs.join(" ");
+          } catch (e) {
+              return "";
+          }
+      }
         return {
           id: {
-            videoId: data.compactVideoRenderer.videoId
+            videoId: data.videoRenderer.videoId
           },
-          url: `https://www.youtube.com/watch?v=${data.compactVideoRenderer.videoId}`,
+          url: `https://www.youtube.com/watch?v=${data.videoRenderer.videoId}`,
           title,
-          description: data.compactVideoRenderer.descriptionSnippet && data.compactVideoRenderer.descriptionSnippet.runs[0] ? data.compactVideoRenderer.descriptionSnippet.runs[0].text : "",
-          duration_raw: data.compactVideoRenderer.lengthText ? data.compactVideoRenderer.lengthText.simpleText : null,
+          channelName: data.videoRenderer.longBylineText && data.videoRenderer.longBylineText.runs[0] ? data.videoRenderer.longBylineText.runs[0].text : null,
+          description: descripcionAux(),
+          duration_raw: data.videoRenderer.lengthText ? data.videoRenderer.lengthText.simpleText : null,
           snippet: {
-            url: `https://www.youtube.com/watch?v=${data.compactVideoRenderer.videoId}`,
-            duration: data.compactVideoRenderer.lengthText ? data.compactVideoRenderer.lengthText.simpleText : null,
-            publishedAt: data.compactVideoRenderer.publishedTimeText ? data.compactVideoRenderer.publishedTimeText.simpleText : null,
+            url: `https://www.youtube.com/watch?v=${data.videoRenderer.videoId}`,
+            duration: data.videoRenderer.lengthText ? data.videoRenderer.lengthText.simpleText : null,
+            publishedAt: data.videoRenderer.publishedTimeText ? data.videoRenderer.publishedTimeText.simpleText : null,
             thumbnails: {
-              id: data.compactVideoRenderer.videoId,
-              url: data.compactVideoRenderer.thumbnail.thumbnails[data.compactVideoRenderer.thumbnail.thumbnails.length - 1].url,
-              default: data.compactVideoRenderer.thumbnail.thumbnails[data.compactVideoRenderer.thumbnail.thumbnails.length - 1],
-              high: data.compactVideoRenderer.thumbnail.thumbnails[data.compactVideoRenderer.thumbnail.thumbnails.length - 1],
-              height: data.compactVideoRenderer.thumbnail.thumbnails[data.compactVideoRenderer.thumbnail.thumbnails.length - 1].height,
-              width: data.compactVideoRenderer.thumbnail.thumbnails[data.compactVideoRenderer.thumbnail.thumbnails.length - 1].width
+              id: data.videoRenderer.videoId,
+              url: data.videoRenderer.thumbnail.thumbnails[data.videoRenderer.thumbnail.thumbnails.length - 1].url,
+              height: data.videoRenderer.thumbnail.thumbnails[data.videoRenderer.thumbnail.thumbnails.length - 1].height,
+              width: data.videoRenderer.thumbnail.thumbnails[data.videoRenderer.thumbnail.thumbnails.length - 1].width
             },
             title,
-            views: data.compactVideoRenderer.viewCountText && data.compactVideoRenderer.viewCountText.simpleText ? data.compactVideoRenderer.viewCountText.simpleText.replace(/[^0-9]/g, "") : 0
+            views: data.videoRenderer.viewCountText && data.videoRenderer.viewCountText.simpleText ? data.videoRenderer.viewCountText.simpleText.replace(/[^0-9]/g, "") : 0
           },
-          views: data.compactVideoRenderer.viewCountText && data.compactVideoRenderer.viewCountText.simpleText ? data.compactVideoRenderer.viewCountText.simpleText.replace(/[^0-9]/g, "") : 0
+          views: data.videoRenderer.viewCountText && data.videoRenderer.viewCountText.simpleText ? data.videoRenderer.viewCountText.simpleText.replace(/[^0-9]/g, "") : 0
         };
 
       } else if (data.videoWithContextRenderer){
