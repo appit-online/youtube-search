@@ -16,7 +16,7 @@ Search videos on youtube without API key
 ### Installing the library
 
 ```bash
-npm install youtube-search-without-api-key --save
+npm install github:DaliuSinger/youtube-search --save
 ```
 
 
@@ -29,9 +29,10 @@ import * as yt from 'youtube-search-without-api-key';
  * Given a search query, searching on youtube
  * @param {string} search value (string or videoId).
  * @param {string} video length value (string):
-     1. under = under 4 minutes;
-     2. between = from 4 until 20 mins lenght;
-     3. over = from 20 mins and longer;
+     1. 'under' = under 4 minutes;
+     2. 'between' = from 4 until 20 mins lenght;
+     3. 'over' = from 20 mins and longer;
+     4. 'EgIQAQ%253D%253D' - videos only, or any custom filter parameters.
  */
 const videos = await yt.search('Hallo Welt', 'between');
 const videos = await yt.search('y5kIrbG2gRc');
@@ -68,6 +69,7 @@ const yt = require('youtube-search-without-api-key');
 /**
  * Given a search query, searching on youtube
  * @param {string} search value.
+ * @param {string} search filter.
  */
 const videos = await yt.search('My Search Query', 'under');
 console.log('Videos:');
