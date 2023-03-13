@@ -14,7 +14,7 @@ export async function searchVideo(searchQuery: string, dur: string) {
   let fetched = false;
   const options = { type: "video", limit: 0 };
 
-  const searchRes: any = await got.get(`${YOUTUBE_URL}/results?q=${rfc3986EncodeURIComponent(searchQuery.trim())}&hl=en&sp=${duration[durKey]}`);
+  const searchRes: any = await got.get(`${YOUTUBE_URL}/results?q=${rfc3986EncodeURIComponent(searchQuery.trim())}&hl=en${duration[durKey] ? '&sp='+duration[durKey] : dur ? '&sp='+dur : ''}`);
   let html = await searchRes.body;
   // try to parse html
   try {
