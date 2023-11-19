@@ -1,5 +1,5 @@
-import { ParserService } from './parser.service';
-import got from 'got';
+import { ParserService } from './parser.service.js';
+import { got } from 'got';
 
 const rfc3986EncodeURIComponent = (str: string) => encodeURIComponent(str).replace(/[!'()*]/g, escape);
 

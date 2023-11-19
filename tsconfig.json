@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "target": "ES6",
     "declaration": true,
     "outDir": "./lib",
     "strict": true

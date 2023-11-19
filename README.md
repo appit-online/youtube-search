@@ -34,40 +34,46 @@ const videos = await yt.search('y5kIrbG2gRc');
 console.log('Videos:');
 console.log(videos);
 
-[{ kind: 'youtube#searchResult',
-     channel:
-      { id: 'UCFzpTuxdolZ_EaZr-emNgbg',
-        name: 'David Koller',
-        url: 'https://www.youtube.com/channel/UCFzpTuxdolZ_EaZr-emNgbg' },
-     id:
-      { videoId: 'y5kIrbG2gRc',
-        channelId: 'UCFzpTuxdolZ_EaZr-emNgbg' },
-     snippet:
-      { url: 'https://www.youtube.com/watch?v=y5kIrbG2gRc',
-        thumbnails: {
-            "url":"https://i.ytimg.com/vi/y5kIrbG2gRc/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLA-pk9HLDSz4VelSFZ01ceyeIpBSw",
-            "width":"246",
-            "height":"138"
+[
+    {
+        "id":
+        {
+            "videoId": "y5kIrbG2gRc"
         },
-        publishedAt: 'vor 3 Monaten',
-        duration: '2:01',
-        title: 'How to Download Free Music On Your iPhone (OFFLINE) 2020',
-        views: '51',
-        description:
-         'This video will show you how to download free music and videos on your iphone easy and fast 2020&#xA0;...' } 
-},...]
-```
-
-```javascript
-const yt = require('youtube-search-without-api-key');
-
-/**
- * Given a search query, searching on youtube
- * @param {string} search value.
- */
-const videos = await yt.search('My Search Query');
-console.log('Videos:');
-console.log(videos);
+        "url": "https://www.youtube.com/watch?v=y5kIrbG2gRc",
+        "title": "How to Download Free Music On Your iPhone (OFFLINE) 2020",
+        "description": "",
+        "duration_raw": "2:01",
+        "snippet":
+        {
+            "url": "https://www.youtube.com/watch?v=y5kIrbG2gRc",
+            "duration": "2:01",
+            "publishedAt": "3 years ago",
+            "thumbnails":
+            {
+                "id": "y5kIrbG2gRc",
+                "url": "https://i.ytimg.com/vi/y5kIrbG2gRc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDuzgRSHVaWMTmiU4TAzv0Opz2CmQ",
+                "default":
+                {
+                    "url": "https://i.ytimg.com/vi/y5kIrbG2gRc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDuzgRSHVaWMTmiU4TAzv0Opz2CmQ",
+                    "width": 720,
+                    "height": 404
+                },
+                "high":
+                {
+                    "url": "https://i.ytimg.com/vi/y5kIrbG2gRc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDuzgRSHVaWMTmiU4TAzv0Opz2CmQ",
+                    "width": 720,
+                    "height": 404
+                },
+                "height": 404,
+                "width": 720
+            },
+            "title": "How to Download Free Music On Your iPhone (OFFLINE) 2020"
+        },
+        "views": "199"
+    },
+    ...
+]
 ```
 
 ## Supported Node.js Versions
