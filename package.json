@@ -1,6 +1,6 @@
 {
   "name": "youtube-search-without-api-key",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Search videos on YouTube without API key",
   "exports": "./lib/index.js",
   "types": "lib/index.d.ts",
@@ -41,6 +41,7 @@
   "homepage": "https://github.com/appit-online/youtube-search#readme",
   "devDependencies": {
     "@types/got": "^9.6.12",
+    "@types/jsonpath": "^0.2.4",
     "@types/node": "^20.9.2",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
@@ -50,6 +51,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "got": "^13.0.0"
+    "got": "^13.0.0",
+    "jsonpath": "^1.1.1"
   }
 }
