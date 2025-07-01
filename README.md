@@ -28,8 +28,13 @@ import * as yt from 'youtube-search-without-api-key';
 /**
  * Given a search query, searching on youtube
  * @param {string} search value (string or videoId).
+ * @param {duration} search value (string).
+ under: < 4 minutes
+ between: 4–20 minutes
+ over: > 20 minutes
  */
 const videos = await yt.search('Hallo Welt');
+const videos = await yt.search('Hallo Welt', {duration: 'under'});
 const videos = await yt.search('y5kIrbG2gRc');
 console.log('Videos:');
 console.log(videos);
