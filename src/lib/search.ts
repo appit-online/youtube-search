@@ -41,9 +41,8 @@ export async function searchVideo(searchQuery: string) {
 
   const parserService = new ParserService();
 
-  for (let i = 0; i < details.length; i++) {
+  for (const dataItem of details) {
     if (options.limit > 0 && results.length >= options.limit) break;
-    const dataItem = details[i];
 
     const parsed = parserService.parseVideo(dataItem);
     if (!parsed) continue;
