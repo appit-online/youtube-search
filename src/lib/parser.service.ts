@@ -1,7 +1,7 @@
 export class ParserService {
 
-  parseVideo(data: any) {
-    if (!data?.videoRenderer) return undefined;
+  public parseVideo(data: any) {
+    if (!data?.videoRenderer) { return undefined; }
 
     try {
       const vr = data.videoRenderer;
@@ -30,17 +30,20 @@ export class ParserService {
           videoId: vr.videoId
         },
         url: `https://www.youtube.com/watch?v=${vr.videoId}`,
+        // tslint:disable-next-line:object-literal-sort-keys
         title,
         description: vr.descriptionSnippet?.runs?.[0]?.text ?? '',
         duration_raw: vr.lengthText?.simpleText ?? null,
         snippet: {
           url: `https://www.youtube.com/watch?v=${vr.videoId}`,
+          // tslint:disable-next-line:object-literal-sort-keys
           duration: vr.lengthText?.simpleText ?? null,
           publishedAt: vr.publishedTimeText?.simpleText ?? null,
           thumbnails: thumbnail
             ? {
               id: vr.videoId,
               url: thumbnail.url,
+              // tslint:disable-next-line:object-literal-sort-keys
               default: thumbnail,
               high: thumbnail,
               height: thumbnail.height,
@@ -57,7 +60,7 @@ export class ParserService {
   }
 
 
-  cleanUpName(name: string): string {
+  public cleanUpName(name: string): string {
    return  name
       // Unicode-Escape-Sequenzen wie \uXXXX in Zeichen umwandeln
      .replace(/\\u[\dA-Fa-f]{4}/g, (match) =>

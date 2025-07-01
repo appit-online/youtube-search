@@ -1,11 +1,12 @@
-import { ParserService } from './parser.service.js';
 import got from 'got';
 import _jp from 'jsonpath';
+import { ParserService } from './parser.service.js';
 
 const USER_AGENT = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
 
 const durationMap: Record<string, string> = {
   under: 'EgQQARgB',     // unter 4 Minuten
+  // tslint:disable-next-line:object-literal-sort-keys
   between: 'EgQQARgD',   // 4–20 Minuten
   over: 'EgQQARgC'       // über 20 Minuten
 };
@@ -53,10 +54,10 @@ export async function searchVideo(searchQuery: string, opts?: { duration?: 'unde
   const parserService = new ParserService();
 
   for (const dataItem of details) {
-    if (options.limit > 0 && results.length >= options.limit) break;
+    if (options.limit > 0 && results.length >= options.limit) { break; }
 
     const parsed = parserService.parseVideo(dataItem);
-    if (!parsed) continue;
+    if (!parsed) { continue; }
 
     results.push(parsed);
   }
