@@ -60,21 +60,17 @@ export class ParserService {
   cleanUpName(name: string): string {
    return  name
       // Unicode-Escape-Sequenzen wie \uXXXX in Zeichen umwandeln
-      .replace(/\\u[\dA-Fa-f]{4}/g, (match) =>
-        String.fromCharCode(parseInt(match.slice(2), 16))
-      )
-      // HTML Entities ersetzen
-      .replace(/&amp;/gi, '&')
-      .replace(/&quot;/gi, '"')
-      .replace(/&lt;/gi, '<')
-      .replace(/&gt;/gi, '>')
-      .replace(/&apos;/gi, "'")
-      // Unerlaubte Zeichen entfernen, nur erlaubte bleiben
-      .replace(/[^a-zA-Z0-9äöüÄÖÜß \-_.!,?()'"&%:;]/g, '')
-      // Mehrere Leerzeichen auf eins reduzieren
-      .replace(/\s+/g, ' ')
-      // Leerzeichen am Anfang und Ende entfernen
-      .trim();
+     .replace(/\\u[\dA-Fa-f]{4}/g, (match) =>
+       String.fromCharCode(parseInt(match.slice(2), 16))
+     )
+     .replace(/&amp;/gi, '&')
+     .replace(/&quot;/gi, '"')
+     .replace(/&lt;/gi, '<')
+     .replace(/&gt;/gi, '>')
+     .replace(/&apos;/gi, "'")
+     .replace(/[^\p{L}\p{N}\s\-_.,!?'":;%&()]/gu, '')
+     .replace(/\s+/g, ' ')
+     .trim();
   }
 
 }
