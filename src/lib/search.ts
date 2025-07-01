@@ -49,7 +49,7 @@ export async function searchVideo(searchQuery: string, opts?: { duration?: 'unde
   // manchmal sind Items in primaryContents
   _jp.query(data, '$..primaryContents..contents[*]').forEach(i => details.push(i));
 
-  if (!details.length) return [];
+  if (!details.length) { return []; }
 
   const parserService = new ParserService();
 
